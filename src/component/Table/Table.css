@@ -1,0 +1,10 @@
+.input-field{
+    margin-bottom: 10px;
+    
+}
+
+.search-box-container{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
