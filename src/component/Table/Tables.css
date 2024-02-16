@@ -1,0 +1,38 @@
+thead {
+    border-radius: var(--4, 4px) !important;
+    border-top: 0.5px solid #E7E7E7;
+    border-bottom: 0.5px solid #E7E7E7;
+    background: #F2F2F2 !important;
+    color: #929292;
+    font-family: "Lato";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    height: 55px;
+}
+
+tr {
+    height: 40px;
+}
+
+th {
+    padding-left: 10px;
+
+}
+
+td {
+    padding-left: 10px;
+    color: #000;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.16px;
+}
+
+table {
+    margin-bottom: 20px;
+}

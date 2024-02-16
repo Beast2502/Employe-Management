@@ -1,0 +1,77 @@
+
+.meet-container {
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    height: 350px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: white;
+    margin-top: 36px;
+    margin-left: 16px;
+    border-radius: 14px;
+  
+    /* dash cards */
+    box-shadow: 0px 4px 20px 0px rgba(215, 215, 215, 0.50);
+  
+  }
+  
+  .meet-main-container {
+    background: #F1F1F1;
+    width: 100%;
+  }
+
+
+.meet-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.meet-input-container {
+
+    width: 800px;
+}
+
+
+.add-btn {
+    display: flex;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    border-radius: 32px;
+    background: var(--golden, linear-gradient(270deg, #FAC86B 4.77%, #FCDB9C 99.6%));
+    border: none;
+    height: 45px;
+    color: #5E6366;
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 133.333% */
+    letter-spacing: -0.18px;
+    width: 200px;
+
+    height: 3.5em;
+}
+
+.heading-content {
+    color: #1E141F;
+    font-family: Lora;
+    font-size: 1.75em;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 32px;
+    text-align: start;
+
+    /* 133.333% */
+}
+
+.meet-sub-cont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

@@ -1,5 +1,77 @@
-.nav-cont{
-    width: 100%;
-    height: 80px;
-    background-color: rgb(3, 3, 156);
+.nav-user-details {
+    height: 60px;
+    width: 285px;
+    border-radius: 39px;
+    border: 2px solid var(--golden, #FAC86B);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
 }
+
+.navbar{
+  background-color: white;
+}
+
+.user-icon-nav {
+    width: 35px;
+    background-color: #FAC86B;
+    border-radius: 100px;
+}
+
+
+.user-detail-name {
+    color: #1E141F;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.user-detail-role {
+    color: #625f62;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    opacity: 0.6;
+}
+
+.user-down-arrow{
+  width: 20px;
+  height: 20px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .user-details-container{
+    border: none;
+    background-color: white;
+    text-align: start;
+  }

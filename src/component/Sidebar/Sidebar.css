@@ -1,6 +1,35 @@
-.side-cont{
-    width: 200px;
-    background-color: red;
-    background-color: #e3f2fd;
+.sidebar-color {
+    background: white;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.11);
     height: 100vh;
+}
+
+.side-bar-icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+    color: #5E6366;
+
+}
+
+
+
+.side-bar , .nav-link{
+    color: #1A1A1A !important;
+    
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+    letter-spacing: -0.18px;
+
+    margin-bottom: 24px;
+
+}
+
+#sidebar a.active {
+    color: #5E6366 !important;
+    border-radius: 30px 0px 0px 30px;
+    background: var(--golden, linear-gradient(270deg, #FAC86B 4.77%, #FCDB9C 99.6%));
 }
