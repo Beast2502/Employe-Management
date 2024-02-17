@@ -48,8 +48,8 @@ const HomePage = () => {
     return (
         <div className="home-main-container ">
             <div className="home-data-section">
-                <Card heading={'Total Customers'} content={'200'} link="/customers" />
-                <Card heading={'Total Astrologers'} content={'200'} link="/astrologer" />
+                {/* <Card heading={'Total Customers'} content={'200'} link="/customers" />
+                <Card heading={'Total Astrologers'} content={'200'} link="/astrologer" /> */}
 
 
             </div>

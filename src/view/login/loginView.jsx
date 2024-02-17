@@ -7,9 +7,9 @@ import BrandIcon from '../../assets/logo.png';
 const LoginView = ({ setEmail, setPassword, loginHandler }) => {
 
     return (
-        <div className="login-container">
+        <div className="container login-container ">
 
-            <form className="card" onSubmit={loginHandler}>
+            <form className="login-form" onSubmit={loginHandler}>
             {/* <img src={BrandIcon} className="" style={{ width: '150px' , marginBottom:'25px'}} /> */}
 
                 <div className="mb-2 w-100">

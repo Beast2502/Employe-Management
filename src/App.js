@@ -37,7 +37,7 @@ function App() {
 
   // let auth = {'token' : false}
 
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(true);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

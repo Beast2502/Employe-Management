@@ -59,8 +59,8 @@ const SideBar = () => {
     console.log(views, "VIEWS")
 
     return (
-        <div className="d-flex align-items-start sidebar-color" style={{ width: '257px' }}>
-            <div className="nav flex-column text-start w-100 sidebar-color" id="v-pills-tab" role="tablist" aria-orientation="vertical" style={{ paddingLeft: "24px" }}>
+        <div className="d-flex align-items-start sidebar-color sidebar" style={{ width: '257px'}}>
+            <div className="nav flex-column text-start w-100 sidebar-color" id="v-pills-tab" role="tablist" aria-orientation="vertical" style={{ paddingLeft: "24px"}}>
                 <nav id="sidebar">
                     <NavLink className="nav-link  d-flex side-bar" to="/" ><img src={HomeIcon} className="side-bar-icon" />Home</NavLink>
                 </nav>

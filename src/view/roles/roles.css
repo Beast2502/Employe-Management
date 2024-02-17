@@ -1,14 +1,13 @@
 .role-container {
     display: flex;
     flex-direction: column;
-    width: 1200px;
     padding-left: 16px;
     padding-right: 16px;
     background: white;
     margin-top: 36px;
     margin-left: 16px;
     border-radius: 14px;
-
+    width: 950px;
     /* dash cards */
     box-shadow: 0px 4px 20px 0px rgba(215, 215, 215, 0.50);
 
@@ -16,8 +15,8 @@
 
 .role-main-container {
     background: #F1F1F1;
-    ;
-    width: 100%;
+    
+    /* width: 100%; */
 }
 
 .role-header {

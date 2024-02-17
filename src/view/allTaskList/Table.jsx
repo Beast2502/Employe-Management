@@ -29,7 +29,7 @@ const Table = ({ list, handleModalData, viewbtn }) => {
               <td>{data.assign_from}</td>
               <td>{data.assign_to}</td>
               <td>
-                {data.status === 'Progress'  && <span class="badge text-bg-warning">{data.status}</span>}
+                {data.status === 'Progess'  && <span class="badge text-bg-warning">{data.status}</span>}
                 {data.status === 'Pending' && <span class="badge text-bg-primary">{data.status}</span>}
                 {data.status === 'Completed' && <span class="badge text-bg-success">{data.status}</span>}
                 {data.status === 'Not Completed' && <span class="badge text-bg-danger">{data.status}</span>}

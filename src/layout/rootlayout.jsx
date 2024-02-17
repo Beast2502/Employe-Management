@@ -16,8 +16,8 @@ import { api_end_point } from "../api/api";
 
 
 
-export default function RootLayout({loginHandler , setEmail , setPassword, token}) {
-    
+export default function RootLayout({ loginHandler, setEmail, setPassword, token }) {
+
 
     return (
         <>
