@@ -24,7 +24,11 @@ const Roles = () => {
     const [modalData, setModalData] = useState({});
 
     useEffect(() => {
-        axios.get(`${api_end_point}/permission/`).then((res) => {
+        axios.get(`${api_end_point}/permission/`,{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
             console.log(res.data.role)
             setRoleList(res.data.role)
 

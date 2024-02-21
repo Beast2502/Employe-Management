@@ -24,7 +24,11 @@ const AddNewUser = () => {
     useEffect(() => {
 
 
-        axios.get(`${api_end_point}/permission/`).then((res) => {
+        axios.get(`${api_end_point}/permission/`,{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
 
 
             console.log(res?.data?.role, "ROLE LIST")
@@ -47,7 +51,11 @@ const AddNewUser = () => {
         if (password !== confirmPass) return alert('Password not matched');
 
 
-        axios.post(`${api_end_point}/userAuth/register`, { email, password, role, userName, dob, address, city_state, mobile, alternateMob, depatment }, { withCredentials: true }).then((res) => {
+        axios.post(`${api_end_point}/userAuth/register`, { email, password, role, userName, dob, address, city_state, mobile, alternateMob, depatment }, {
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
 
             console.log(res, 'response')
 

@@ -23,7 +23,13 @@ const SideBar = () => {
     useEffect(() => {
         try {
 
-            sessionStorage.getItem("email") && axios.post(`${api_end_point}/userAuth/getmodules`, { email: sessionStorage.getItem("email") }).then((res) => {
+            sessionStorage.getItem("email") && axios.post(`${api_end_point}/userAuth/getmodules`, { email: sessionStorage.getItem("email") },
+            {
+                headers: {
+                    'ngrok-skip-browser-warning': 'skip-browser-warning',
+                }
+            }
+            ).then((res) => {
 
 
                 let obj = {}

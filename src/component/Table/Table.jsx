@@ -4,6 +4,8 @@ import ViewListIcon from '../../assets/viewListIcon.svg'
 
 const Table = ({ list, handleModalData, viewbtn }) => {
 
+  console.log(list,"LISTTTTTTTTTTTTTTTTTTTTTTTTT")
+
   return (
     <table className="text-start">
       <thead className="table-head-color">
@@ -18,7 +20,7 @@ const Table = ({ list, handleModalData, viewbtn }) => {
         </tr>
       </thead>
       <tbody>
-        {list.map((data, i) => {
+        {list?.map((data, i) => {
           console.log(data.userName,"DATA")
           return (
 

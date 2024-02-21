@@ -13,7 +13,11 @@ const Customer = () => {
     useEffect(() => {
 
 
-        axios.post(`${api_end_point}/task/assigned` ,{userEmail : sessionStorage.getItem('email')}).then((res) => {
+        axios.post(`${api_end_point}/task/assigned` ,{userEmail : sessionStorage.getItem('email')},{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
 
             console.log(res, "ASSIGEND TASK ")
 
@@ -37,7 +41,11 @@ const Customer = () => {
     }
 
     const handleRefersh = () => {
-        axios.post(`${api_end_point}/task/assigned` ,{userEmail : sessionStorage.getItem('email')}).then((res) => {
+        axios.post(`${api_end_point}/task/assigned` ,{userEmail : sessionStorage.getItem('email')},{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
 
             console.log(res, "RES")
 
@@ -56,7 +64,11 @@ const Customer = () => {
 
         try{
     
-          axios.post(`${api_end_point}/task/update` ,{_id , status}).then(res=>{
+          axios.post(`${api_end_point}/task/update` ,{_id , status},{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then(res=>{
             handleRefersh()
             alert(res.data.message)
           })

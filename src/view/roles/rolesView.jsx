@@ -68,7 +68,11 @@ const RolesView = ({ show, setShow, modalData }) => {
 
     const handleUpdateUser = (id) => {
         console.log(selected, modules, id, "FORM UPDATE")
-        axios.post(`${api_end_point}/permission/update`, { _id: id, name: roleName, permissions: selected, modules: modules }).then((res) => {
+        axios.post(`${api_end_point}/permission/update`, { _id: id, name: roleName, permissions: selected, modules: modules },{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
             setShow(false)
             
 

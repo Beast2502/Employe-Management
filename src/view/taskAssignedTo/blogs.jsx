@@ -19,7 +19,11 @@ const TaskAssignTo = () => {
 
 
     useEffect(() => {
-        axios.post(`${api_end_point}/task/assignedFrom` ,{userEmail : sessionStorage.getItem('email')}).then(res => {
+        axios.post(`${api_end_point}/task/assignedFrom` ,{userEmail : sessionStorage.getItem('email')},{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then(res => {
             console.log(res.data);
             setBlogList(res.data)
         }).catch((err) => {
@@ -29,7 +33,11 @@ const TaskAssignTo = () => {
     }, [show])
 
     const handleRefersh =()=>{
-        axios.post(`${api_end_point}/task/assignedFrom` ,{userEmail : sessionStorage.getItem('email')}).then(res => {
+        axios.post(`${api_end_point}/task/assignedFrom` ,{userEmail : sessionStorage.getItem('email')},{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then(res => {
             console.log(res.data);
             setBlogList(res.data)
         }).catch((err) => {
@@ -50,7 +58,11 @@ const TaskAssignTo = () => {
 
         try{
     
-          axios.post(`${api_end_point}/task/update` ,{_id , verify : !verify}).then(res=>{
+          axios.post(`${api_end_point}/task/update` ,{_id , verify : !verify},{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then(res=>{
             handleRefersh()
             alert(res.data.message)
           })

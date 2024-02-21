@@ -13,7 +13,11 @@ const AllTaskList = () => {
     useEffect(() => {
 
 
-        axios.get(`${api_end_point}/task/`).then((res) => {
+        axios.get(`${api_end_point}/task/`,{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
 
 
             setCustList(res.data)
@@ -36,7 +40,11 @@ const AllTaskList = () => {
     }
 
     const handleRefersh = () => {
-        axios.get(`${api_end_point}/task`).then((res) => {
+        axios.get(`${api_end_point}/task` ,{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
 
             console.log(res, "RES")
 

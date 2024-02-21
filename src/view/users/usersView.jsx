@@ -55,6 +55,10 @@ const UsersView = ({ show, setShow, modalData }) => {
             alternateMob,
             depatment,
             isActive
+        },{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
         }).then((res) => {
             setShow(false)
             alert('Updated')
@@ -67,7 +71,11 @@ const UsersView = ({ show, setShow, modalData }) => {
     useEffect(() => {
 
 
-        axios.get(`${api_end_point}/permission/`).then((res) => {
+        axios.get(`${api_end_point}/permission/`,{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
 
 
             console.log(res?.data?.role, "ROLE LIST")

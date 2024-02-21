@@ -52,7 +52,11 @@ const AddNewRole = () => {
     }
 
     const handleRole = () => {
-        axios.post(`${api_end_point}/permission/create`, { name: roleName, permissions: selected ,modules : modules }).then((res) => {
+        axios.post(`${api_end_point}/permission/create`, { name: roleName, permissions: selected ,modules : modules },{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
             console.log(res.message)
             navigate('/roles')
 

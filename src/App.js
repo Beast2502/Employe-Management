@@ -30,7 +30,7 @@ import { api_end_point } from './api/api';
 import modulesList from './constants/constants';
 
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = false;
 
 
 function App() {
@@ -56,7 +56,13 @@ function App() {
 
     e.preventDefault();
 
-    axios.post(`${api_end_point}/userAuth/login`, { email, password }).then((res) => {
+    axios.post(`${api_end_point}/userAuth/login`, { email, password },
+    {
+      headers: {
+          'ngrok-skip-browser-warning': 'skip-browser-warning',
+      }
+  }
+    ).then((res) => {
       console.log(res, 'RESPONSE')
       setToken(res.data.token)
       sessionStorage.setItem("access-token", res.data.token);

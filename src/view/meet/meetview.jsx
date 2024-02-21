@@ -20,7 +20,11 @@ const Meet = () => {
 
 
 
-        axios.post(`${api_end_point}/meet/update`, { id: id, meetlink: meetlink }).then((res) => {
+        axios.post(`${api_end_point}/meet/update`, { id: id, meetlink: meetlink },{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
             console.log(res.data)
             setData(res.data.meetlink)
         })
@@ -28,7 +32,11 @@ const Meet = () => {
 
     useEffect(() => {
 
-        axios.get(`${api_end_point}/meet/`).then((res) => {
+        axios.get(`${api_end_point}/meet/` ,{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
 
             console.log(res.data)
 

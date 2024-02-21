@@ -85,7 +85,11 @@ const BlogView = ({ show, setShow, modalData }) => {
         formData.append('isActive', isActive);
         formData.append('img_url', imgUrl)
 
-        axios.post(`${api_end_point}/blogs/update`, formData).then(res => {
+        axios.post(`${api_end_point}/blogs/update`, formData ,{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then(res => {
             if (res.status === 200) {
                 setShow(false)
                 alert(res.data.message)

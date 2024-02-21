@@ -19,7 +19,11 @@ const HomePage = () => {
     useEffect(() => {
 
 
-        axios.get(`${api_end_point}/customers`).then((res) => {
+        axios.get(`${api_end_point}/customers`,{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
 
             console.log(res, "RES")
 

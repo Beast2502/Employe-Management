@@ -17,7 +17,11 @@ const User = () => {
     useEffect(() => {
 
 
-        axios.get(`${api_end_point}/userAuth/getusers`).then((res) => {
+        axios.get(`${api_end_point}/userAuth/getusers`,{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then((res) => {
             console.log(res.data);
             setUserList(res?.data)
 

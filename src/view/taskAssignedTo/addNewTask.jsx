@@ -24,7 +24,11 @@ const AddNewBlog = () => {
        
 
 
-        axios.post(`${api_end_point}/task/create`, {task_desc : taskDesc , assign_to:assignTo , assign_from: sessionStorage.getItem('email')}).then(res => {
+        axios.post(`${api_end_point}/task/create`, {task_desc : taskDesc , assign_to:assignTo , assign_from: sessionStorage.getItem('email')},{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then(res => {
             if (res.status === 200) {
                 alert(res.data.message)
                 navigate('/task-assigned-to')
@@ -35,7 +39,11 @@ const AddNewBlog = () => {
 
     useEffect(() => {
 
-        axios.get(`${api_end_point}/userAuth/getUsers`).then(res => {
+        axios.get(`${api_end_point}/userAuth/getUsers`,{
+            headers: {
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+            }
+        }).then(res => {
 
             console.log('user list', res.data)
 
