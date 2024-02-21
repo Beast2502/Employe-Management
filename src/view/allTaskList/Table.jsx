@@ -5,7 +5,7 @@ import ViewListIcon from '../../assets/viewListIcon.svg'
 const Table = ({ list, handleModalData, viewbtn }) => {
 
   return (
-    <table className="text-start" style={{marginBottom:'50px'}}>
+    <table className="table table-responsive text-start" style={{marginBottom:'50px'}}>
       <thead className="table-head-color">
         <tr>
           <th scope="col" className="th-container">S.no.</th>

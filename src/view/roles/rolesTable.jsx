@@ -5,7 +5,7 @@ import ViewListIcon from '../../assets/viewListIcon.svg'
 const RolesTable = ({rolesList ,handleModalData}) => {
 
     return (
-        <table className="text-start">
+        <table className="table table-responsive text-start">
             <thead className="table-head-color">
                 <tr>
                     <th scope="col" className="th-container">S.No.</th>
