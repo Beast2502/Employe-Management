@@ -55,7 +55,10 @@ const AddNewBlog = () => {
 
 
     }, [])
+    
+    console.log(sessionStorage.getItem('level') ,"LEVEL TEST")
 
+    const userLevel = sessionStorage.getItem('level') ;
     return (
         <div style={{ display: "flex", marginBottom: 'auto', background: '#F1F1F1' }}>
             <div className="add-blogs-section">
@@ -86,6 +89,7 @@ const AddNewBlog = () => {
                             <select class="form-control form-select" aria-label="Default select example" onChange={(e) => setAssign(e.target.value)}>
                                 <option selected>Open this select menu</option>
                                 {userList.map((data) => {
+                                    if(data?.level[0]?.level < userLevel )
                                     return (<option value={data.email}>{data.email}</option>)
                                 })}
 

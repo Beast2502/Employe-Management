@@ -68,7 +68,7 @@ function App() {
       sessionStorage.setItem("access-token", res.data.token);
       sessionStorage.setItem("role", res.data.role)
       sessionStorage.setItem("email", res.data.email)
-
+      sessionStorage.setItem("level" , res.data.level)
       console.log(    sessionStorage.getItem("email"), "USER EMAIL")
 
       sessionStorage.getItem("email") && axios.post(`${api_end_point}/userAuth/getmodules`, { email: sessionStorage.getItem("email") }).then((res) => {
