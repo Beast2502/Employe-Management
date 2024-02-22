@@ -4,13 +4,16 @@ import "./roles.css"
 import { api_end_point } from "../../api/api";
 import modulesList from "../../constants/constants";
 import { useNavigate } from "react-router-dom";
+import levels from "../../constants/levels";
 
 const AddNewRole = () => {
     const [selected, setSelected] = useState([])
 
     const [roleName, setRolename] = useState("");
 
-    const [modules , setModules] = useState("");
+    const [modules, setModules] = useState("");
+
+    const [level, setlevel] = useState("");
 
     const navigate = useNavigate();
 
@@ -52,7 +55,8 @@ const AddNewRole = () => {
     }
 
     const handleRole = () => {
-        axios.post(`${api_end_point}/permission/create`, { name: roleName, permissions: selected ,modules : modules },{
+        if (!level) return alert('Please select the level')
+        axios.post(`${api_end_point}/permission/create`, { name: roleName, permissions: selected, modules: modules, level: level }, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
             }
@@ -64,11 +68,11 @@ const AddNewRole = () => {
     }
 
     console.log(selected, "SELECTED")
-    console.log(modules,"Modules")
+    console.log(modules, "Modules")
 
 
     return (
-        <div className="role-container" style={{width : "900px"}}>
+        <div className="role-container" style={{ width: "900px" }}>
             <div className="role-header">
 
                 <div className="w-25 mt-5 mb-5 w-10">
@@ -94,7 +98,7 @@ const AddNewRole = () => {
                             {modulesList.map((data) => {
                                 return (
                                     <div className="flex-row" >
-                                        <input type="checkbox"  style={{marginRight:'2px'}} onChange={() => handleModules(data.title)} />
+                                        <input type="checkbox" style={{ marginRight: '2px' }} onChange={() => handleModules(data.title)} />
                                         <label for="formGroupExampleInput" className="form-label">{data.title}</label>
                                     </div>)
                             })}
@@ -110,12 +114,23 @@ const AddNewRole = () => {
                             {data.map((data) => {
                                 return (
                                     <div className="flex-row" >
-                                        <input type="checkbox" value={'read_task'} style={{marginRight:'2px'}} onChange={() => handleOptions(data.title)} />
+                                        <input type="checkbox" value={'read_task'} style={{ marginRight: '2px' }} onChange={() => handleOptions(data.title)} />
                                         <label for="formGroupExampleInput" className="form-label">{data.title.toUpperCase()}</label>
                                     </div>)
                             })}
 
                         </div>
+                    </div>
+                    <div className="col text-start">
+                        <label for="formGroupExampleInput" className="form-label">Level</label>
+
+                        <select class="form-control form-select" aria-label="Default select example" onChange={(e) => setlevel(e.target.value)}>
+                            <option selected>Select Level</option>
+                            {levels.map((data) => {
+                                return (<option value={data.value}>{data.title}</option>)
+                            })}
+
+                        </select>
                     </div>
 
 

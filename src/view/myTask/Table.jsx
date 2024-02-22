@@ -16,7 +16,7 @@ const Table = ({ list, handleModalData, viewbtn, handleStatus }) => {
           <th scope="col" className="th-container">S.no.</th>
           <th scope="col" className="th-container">Task Desc</th>
           <th scope="col" className="th-container">Assign From</th>
-          {/* <th scope="col" className="th-container">Assign To</th> */}
+          <th scope="col" className="th-container">Department</th>
           <th scope="col" className="th-container">Status</th>
           <th scope="col" className="th-container">Created At</th>
           <th scope="col" className="th-container">Updated At</th>
@@ -32,7 +32,8 @@ const Table = ({ list, handleModalData, viewbtn, handleStatus }) => {
               <td scope="row">{i + 1}</td>
               <td>{data.task_desc}</td>
               <td>{data.assign_from}</td>
-              {/* <td>{data.assign_to}</td> */}
+            
+              <td>{data.assign_to_depart}</td>
               <td>
                 {data.status === 'Progess'  && <span class="badge text-bg-warning">{data.status}</span>}
                 {data.status === 'Pending' && <span class="badge text-bg-primary">{data.status}</span>}

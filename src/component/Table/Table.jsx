@@ -12,6 +12,8 @@ const Table = ({ list, handleModalData, viewbtn }) => {
         <tr>
           <th scope="col" className="th-container">S.no.</th>
           <th scope="col" className="th-container">Name</th>
+          <th scope="col" className="th-container">Department</th>
+
           <th scope="col" className="th-container">Email</th>
           <th scope="col" className="th-container">Mobile No.</th>
 
@@ -28,8 +30,10 @@ const Table = ({ list, handleModalData, viewbtn }) => {
 
               <td scope="row">{i + 1}</td>
               <td>{data.userName}</td>
+              <td>{data.depatment}</td>
               <td>{data.email}</td>
               <td>{data.mobile}</td>
+             
               <td>{data.isActive ? <span class="text-success">Active</span> : <span class="text-danger">Inactive</span>}</td>
               {viewbtn && <td><img src={ViewListIcon}  style={{cursor:'pointer'}} onClick={() => handleModalData(data)}/></td>}
             </tr>

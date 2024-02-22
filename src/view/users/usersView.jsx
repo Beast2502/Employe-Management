@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import { api_end_point } from "../../api/api";
+import departMentList from "../../constants/departments";
 
 import "./user.css";
 
@@ -55,7 +56,7 @@ const UsersView = ({ show, setShow, modalData }) => {
             alternateMob,
             depatment,
             isActive
-        },{
+        }, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
             }
@@ -71,7 +72,7 @@ const UsersView = ({ show, setShow, modalData }) => {
     useEffect(() => {
 
 
-        axios.get(`${api_end_point}/permission/`,{
+        axios.get(`${api_end_point}/permission/`, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
             }
@@ -144,17 +145,19 @@ const UsersView = ({ show, setShow, modalData }) => {
                                         </tr>
                                         <tr>
                                             <th scope="row"><label className="form-label">Role</label></th>
+                                            <td>
+                                                <select className="form-control form-select" aria-label="Default select example" onChange={(e) => setRole(e.target.value)}>
+                                                    <option selected>{role}</option>
+                                                    {roleList.map((data) => {
+                                                        return (<option value={data.name}>{data.name}</option>)
+                                                    })}
 
-                                            <select className="form-select" aria-label="Default select example" onChange={(e) => setRole(e.target.value)}>
-                                                <option selected>{role}</option>
-                                                {roleList.map((data) => {
-                                                    return (<option value={data.name}>{data.name}</option>)
-                                                })}
-
-                                            </select>
-
+                                                </select>
+                                            </td>
 
                                         </tr>
+
+
                                         <tr>
                                             <th scope="row"><label className="form-label">Address</label></th>
                                             <td>
@@ -174,7 +177,15 @@ const UsersView = ({ show, setShow, modalData }) => {
                                         <tr>
                                             <th scope="row"><label className="form-label">Department</label></th>
                                             <td>
-                                                <input className="form-control" value={depatment} onChange={(e) => setDepart(e.target.value)} />
+                                                {/* <input className="form-control" value={depatment} onChange={(e) => setDepart(e.target.value)} /> */}
+
+                                                <select class="form-control form-select" aria-label="Default select example" onChange={(e) => setDepart(e.target.value)}>
+                                                    <option selected>{depatment}</option>
+                                                    {departMentList.map((data) => {
+                                                        return (<option value={data.title}>{data.title}</option>)
+                                                    })}
+
+                                                </select>
 
                                             </td>
                                         </tr>

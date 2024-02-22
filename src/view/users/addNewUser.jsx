@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { api_end_point } from "../../api/api";
+import departMentList from "../../constants/departments";
 import './user.css';
 
 const AddNewUser = () => {
@@ -158,9 +159,10 @@ const AddNewUser = () => {
                         {/* <input type="text" className="form-control" placeholder="DEPARTMENT" aria-label="Last name" /> */}
                         <select class="form-control form-select" aria-label="Default select example" onChange={(e) => setDepart(e.target.value)}>
                             <option selected>Open this select menu</option>
-                            <option value="adminstrator">Adminstrator</option>
-                            <option value="operations">Operations</option>
-                            <option value="hr">Hr</option>
+                            {departMentList.map((data) => {
+                                return (<option value={data.title}>{data.title}</option>)
+                            })}
+
                         </select>
                     </div>
                 </div>

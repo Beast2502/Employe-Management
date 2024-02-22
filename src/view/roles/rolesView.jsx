@@ -5,6 +5,7 @@ import modulesList from "../../constants/constants";
 import axios from "axios";
 import { api_end_point } from "../../api/api";
 
+import levels from "../../constants/levels";
 
 
 
@@ -19,6 +20,8 @@ const RolesView = ({ show, setShow, modalData }) => {
 
     const [modules, setModules] = useState([]);
 
+    const [level, setlevel] = useState("");
+
     const navigate = useNavigate();
 
     const data = [
@@ -28,11 +31,12 @@ const RolesView = ({ show, setShow, modalData }) => {
         { id: 4, title: 'read_task' },
     ]
 
-   
+
     useEffect(() => {
         setRolename(modalData.name)
         setModules(modalData.modules)
         setSelected(modalData.permissions)
+        setlevel(modalData.level)
     }, [modalData])
 
 
@@ -68,13 +72,13 @@ const RolesView = ({ show, setShow, modalData }) => {
 
     const handleUpdateUser = (id) => {
         console.log(selected, modules, id, "FORM UPDATE")
-        axios.post(`${api_end_point}/permission/update`, { _id: id, name: roleName, permissions: selected, modules: modules },{
+        axios.post(`${api_end_point}/permission/update`, { _id: id, name: roleName, permissions: selected, modules: modules, level: level }, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
             }
         }).then((res) => {
             setShow(false)
-            
+
 
             alert(res.data.message)
 
@@ -102,72 +106,90 @@ const RolesView = ({ show, setShow, modalData }) => {
                 <div className="row">
 
                     {/* 1 section */}
-                            <div className="card-body">
-                       
-                                <table className="table table-borderless text-start" >
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row"><label className="form-label">Name</label></th>
-                                            <td>
-                                                <input className="form-control" type="text" value={roleName} onChange={(e) => setRolename(e.target.value)} />
+                    <div className="card-body">
 
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row "><label className="form-label">Modules</label></th>
-                                            <td>
-                                                {modules?.map((data) => {
-                                                    return <span class="badge text-bg-primary">{data}</span>
+                        <table className="table table-borderless text-start" >
+                            <tbody>
+                                <tr>
+                                    <th scope="row"><label className="form-label">Name</label></th>
+                                    <td>
+                                        <input className="form-control" type="text" value={roleName} onChange={(e) => setRolename(e.target.value)} />
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row "><label className="form-label">Modules</label></th>
+                                    <td>
+                                        {modules?.map((data) => {
+                                            return <span class="badge text-bg-primary">{data}</span>
+                                        })}
+
+                                        <div>
+                                            {modulesList?.map((data) => {
+                                                return (
+                                                    <div className="flex-row" >
+                                                        <input type="checkbox" style={{ marginRight: '2px' }} onChange={() => handleModules(data.title)} />
+                                                        <label for="formGroupExampleInput" className="form-label">{data.title}</label>
+                                                    </div>)
+                                            })}
+
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row"><label className="form-label">Permissions</label></th>
+                                    <td>
+                                        {selected?.map((data) => {
+                                            return <span class="badge text-bg-primary">{data}</span>
+                                        })}
+
+                                        <div>
+                                            <div>
+                                                {data?.map((data) => {
+                                                    return (
+                                                        <div className="flex-row" >
+                                                            <input type="checkbox" value={'read_task'} style={{ marginRight: '2px' }} onChange={() => handleOptions(data.title)} />
+                                                            <label for="formGroupExampleInput" className="form-label">{data.title.toUpperCase()}</label>
+                                                        </div>)
                                                 })}
 
-                                                <div>
-                                                    {modulesList?.map((data) => {
-                                                        return (
-                                                            <div className="flex-row" >
-                                                                <input type="checkbox" style={{ marginRight: '2px' }}  onChange={() => handleModules(data.title)} />
-                                                                <label for="formGroupExampleInput" className="form-label">{data.title}</label>
-                                                            </div>)
-                                                    })}
+                                            </div>
 
-                                                </div>
-                                            </td>
+                                        </div>
+                                    </td>
 
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><label className="form-label">Permissions</label></th>
-                                            <td>
-                                                {selected?.map((data) => {
-                                                    return <span class="badge text-bg-primary">{data}</span>
-                                                })}
+                                </tr>
+                                <tr>
+                                    <th scope="row"><label className="form-label">Level</label></th>
+                                    <td>
+                                        <span class="badge text-bg-primary mb-2">{levels.map((data)=>{
+                                            if(data.value === level){
+                                                return data.title
+                                            }
+                                        })}</span>
 
-                                                <div>
-                                                    <div>
-                                                        {data?.map((data) => {
-                                                            return (
-                                                                <div className="flex-row" >
-                                                                    <input type="checkbox" value={'read_task'} style={{ marginRight: '2px' }} onChange={() => handleOptions(data.title)} />
-                                                                    <label for="formGroupExampleInput" className="form-label">{data.title.toUpperCase()}</label>
-                                                                </div>)
-                                                        })}
+                                        <select class="form-control form-select" aria-label="Default select example" onChange={(e) => setlevel(e.target.value)}>
+                                            {levels.map((data) => {
+                                                return (<option value={data.value}>{data.title}</option>)
+                                            })}
 
-                                                    </div>
+                                        </select>
 
-                                                </div>
-                                            </td>
+                                    </td>
 
-                                        </tr>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <div className="d-flex flex-column align-items-end">
+                            <button className="add-btn" onClick={() => handleUpdateUser(modalData._id)}>UPDATE</button>
+
+                        </div>
+                    </div>
 
 
-                                    </tbody>
-                                </table>
-
-                                <div className="d-flex flex-column align-items-end">
-                                    <button className="add-btn" onClick={() => handleUpdateUser(modalData._id)}>UPDATE</button>
-
-                                </div>
-                            </div>
-                            
-                        
 
                 </div>
 

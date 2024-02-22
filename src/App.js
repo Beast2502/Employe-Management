@@ -106,7 +106,11 @@ function App() {
   const [views, setViews] = useState({});
 
   useEffect(() => {
-    sessionStorage.getItem("email") && axios.post(`${api_end_point}/userAuth/getmodules`, { email: sessionStorage.getItem("email") }).then((res) => {
+    sessionStorage.getItem("email") && axios.post(`${api_end_point}/userAuth/getmodules`, { email: sessionStorage.getItem("email") },{
+      headers:{
+        'Session-Value' : sessionStorage.getItem('access-token')
+      }
+    }).then((res) => {
 
 
       let obj = {}
