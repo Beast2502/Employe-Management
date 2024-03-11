@@ -59,6 +59,7 @@ const AddNewRole = () => {
         axios.post(`${api_end_point}/permission/create`, { name: roleName, permissions: selected, modules: modules, level: level }, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
             console.log(res.message)

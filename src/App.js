@@ -16,7 +16,7 @@ import {
 import RootLayout from './layout/rootlayout';
 import HomePage from './view/homepage/home';
 import User from './view/users/user';
-import TaskAssignTo from './view/taskAssignedTo/blogs';
+import TaskAssignTo from './view/taskAssignedTo/taskAssign';
 import AllTask from './view/allTaskList/allTaskList';
 import MyTask from './view/myTask/customers';
 import AddNewUser from './view/users/addNewUser';
@@ -28,6 +28,10 @@ import AddNewRole from './view/roles/addNewRole';
 import axios from 'axios';
 import { api_end_point } from './api/api';
 import modulesList from './constants/constants';
+import LeavePage from './view/leaveManage/leavePage';
+import AddNewLeave from './view/leaveManage/addLeave';
+import RequestLeaves from './view/requestLeaves/leavePage';
+import HRRequestLeave from './view/hrRequest/leavePage';
 
 
 axios.defaults.withCredentials = false;
@@ -57,21 +61,28 @@ function App() {
     e.preventDefault();
 
     axios.post(`${api_end_point}/userAuth/login`, { email, password },
-    {
-      headers: {
+      {
+        headers: {
           'ngrok-skip-browser-warning': 'skip-browser-warning',
+        }
       }
-  }
     ).then((res) => {
       console.log(res, 'RESPONSE')
       setToken(res.data.token)
       sessionStorage.setItem("access-token", res.data.token);
       sessionStorage.setItem("role", res.data.role)
       sessionStorage.setItem("email", res.data.email)
-      sessionStorage.setItem("level" , res.data.level)
-      console.log(    sessionStorage.getItem("email"), "USER EMAIL")
-
-      sessionStorage.getItem("email") && axios.post(`${api_end_point}/userAuth/getmodules`, { email: sessionStorage.getItem("email") }).then((res) => {
+      sessionStorage.setItem("level", res.data.level)
+      
+      console.log(sessionStorage.getItem('access-token'),"USER EMAIL");
+      sessionStorage.getItem("email") && axios.post(`${api_end_point}/userAuth/getmodules`,
+        {
+          email: sessionStorage.getItem("email"),
+        }, {
+        headers: {
+          'Authorization': sessionStorage.getItem("access-token")
+        }
+      }).then((res) => {
 
 
         let obj = {}
@@ -80,7 +91,7 @@ function App() {
         let module_user = res.data.modules
 
         console.log(modulesList, "APP JS FILE")
-        
+
 
         for (let i = 0; i < modulesList.length; i++) {
           for (let j = 0; j < module_user.length; j++) {
@@ -98,7 +109,7 @@ function App() {
 
 
 
-    }).catch(err=>console.log(err.response.data.message ,"HI i am breaking"))
+    }).catch(err => console.log(err.response.data.message, "HI i am breaking"))
 
   }
 
@@ -106,9 +117,9 @@ function App() {
   const [views, setViews] = useState({});
 
   useEffect(() => {
-    sessionStorage.getItem("email") && axios.post(`${api_end_point}/userAuth/getmodules`, { email: sessionStorage.getItem("email") },{
-      headers:{
-        'Session-Value' : sessionStorage.getItem('access-token')
+    sessionStorage.getItem("email") && axios.post(`${api_end_point}/userAuth/getmodules`, { email: sessionStorage.getItem("email") }, {
+      headers: {
+        'Authorization': sessionStorage.getItem("access-token")
       }
     }).then((res) => {
 
@@ -131,8 +142,9 @@ function App() {
       setViews(obj)
 
 
-    }).catch(err=> {console.log(err)
-    alert(err)
+    }).catch(err => {
+      console.log(err)
+      alert(err)
     })
   }, [setViews])
 
@@ -150,6 +162,10 @@ function App() {
         <Route path='add-task' element={<AddNewTask />} />
         <Route path='roles' element={views.Roles ? <RolesView /> : <Navigate to="/" />} />
         <Route path='add-new-role' element={views.Roles ? <AddNewRole /> : <Navigate to="/" />} />
+        <Route path='leave-request-from' element={<RequestLeaves/>}/>
+        <Route path='hr-leaves-approval' element={<HRRequestLeave/>}/>
+        <Route path='leave-request' element={<LeavePage />} />
+        <Route path='add-new-leave' element={<AddNewLeave />} />
 
 
       </Route>
@@ -158,7 +174,6 @@ function App() {
   );
 
 
-  console.log(views, "VIEWS")
 
   return (
     <div className="App">

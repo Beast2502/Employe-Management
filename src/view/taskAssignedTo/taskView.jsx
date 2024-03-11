@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import { api_end_point } from "../../api/api";
 
-import "./blogs.css";
+import "./task.css";
 
 import ViewListIcon from '../../assets/viewListIcon.svg'
 import { useNavigate } from "react-router-dom";
@@ -88,6 +88,7 @@ const BlogView = ({ show, setShow, modalData }) => {
         axios.post(`${api_end_point}/blogs/update`, formData ,{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then(res => {
             if (res.status === 200) {

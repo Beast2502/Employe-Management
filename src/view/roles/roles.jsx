@@ -27,6 +27,7 @@ const Roles = () => {
         axios.get(`${api_end_point}/permission/`,{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
             console.log(res.data.role)

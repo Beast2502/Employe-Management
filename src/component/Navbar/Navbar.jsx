@@ -14,17 +14,17 @@ import modulesList from "../../constants/constants";
 
 const NavBar = () => {
 
-    const [role,setRole] = useState("");
-    const [email,setEmail] = useState("");
+    const [role, setRole] = useState("");
+    const [email, setEmail] = useState("");
 
-useEffect(()=>{
-    setEmail(sessionStorage.getItem("email"));
-    setRole(sessionStorage.getItem("role"))
+    useEffect(() => {
+        setEmail(sessionStorage.getItem("email"));
+        setRole(sessionStorage.getItem("role"))
 
-    console.log(email,"CHECK EMAIl")
+        console.log(email, "CHECK EMAIl")
 
-  
-},[])
+
+    }, [])
 
 
 
@@ -40,6 +40,10 @@ useEffect(()=>{
                 <div className="container-fluid d-flex justify-content-between">
                     <NavLink className="navbar-brand" to={'/'} >
                         {/* <img src={BrandIcon} className="" style={{ width: '150px' }} /> */}
+                        <div className="heading-content text-end">
+                            Zadaniye
+                        </div>
+
                     </NavLink>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>

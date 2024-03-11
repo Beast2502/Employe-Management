@@ -59,6 +59,7 @@ const UsersView = ({ show, setShow, modalData }) => {
         }, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
             setShow(false)
@@ -75,6 +76,7 @@ const UsersView = ({ show, setShow, modalData }) => {
         axios.get(`${api_end_point}/permission/`, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
 

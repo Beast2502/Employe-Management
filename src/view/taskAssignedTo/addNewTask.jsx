@@ -4,7 +4,7 @@ import { api_end_point } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import departMentList from "../../constants/departments";
 
-import "./blogs.css";
+import "./task.css";
 
 const AddNewBlog = () => {
 
@@ -29,6 +29,7 @@ const AddNewBlog = () => {
         axios.post(`${api_end_point}/task/create`, {task_desc : taskDesc , assign_to:assignTo , assign_from: sessionStorage.getItem('email') , assign_to_depart : assignDepart},{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then(res => {
             if (res.status === 200) {
@@ -44,6 +45,7 @@ const AddNewBlog = () => {
         axios.get(`${api_end_point}/userAuth/getUsers`,{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then(res => {
 

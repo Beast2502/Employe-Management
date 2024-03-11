@@ -7,6 +7,8 @@ import PermissionIcon from "../../assets/permission.svg";
 import MeetIcon from "../../assets/meet.svg";
 import CustomersIcon from "../../assets/customer.svg";
 import BlogsIcon from "../../assets/blogs.svg";
+import HolidayIcon from "../../assets/holiday.svg";
+import LeaveReqIcon from "../../assets/holiday-req.svg";
 
 import axios from "axios";
 import modulesList from "../../constants/constants";
@@ -24,11 +26,12 @@ const SideBar = () => {
         try {
 
             sessionStorage.getItem("email") && axios.post(`${api_end_point}/userAuth/getmodules`, { email: sessionStorage.getItem("email") },
-            {
-                headers: {
-                    'ngrok-skip-browser-warning': 'skip-browser-warning',
+                {
+                    headers: {
+                        'ngrok-skip-browser-warning': 'skip-browser-warning',
+                        'Authorization': sessionStorage.getItem("access-token")
+                    }
                 }
-            }
             ).then((res) => {
 
 
@@ -65,8 +68,8 @@ const SideBar = () => {
     console.log(views, "VIEWS")
 
     return (
-        <div className="d-flex align-items-start sidebar-color sidebar" style={{ width: '257px'}}>
-            <div className="nav flex-column text-start w-100 sidebar-color" id="v-pills-tab" role="tablist" aria-orientation="vertical" style={{ paddingLeft: "24px"}}>
+        <div className="d-flex align-items-start sidebar-color sidebar" style={{ width: '257px' }}>
+            <div className="nav flex-column text-start w-100 sidebar-color" id="v-pills-tab" role="tablist" aria-orientation="vertical" style={{ paddingLeft: "24px" }}>
                 <nav id="sidebar">
                     <NavLink className="nav-link  d-flex side-bar" to="/" ><img src={HomeIcon} className="side-bar-icon" />Home</NavLink>
                 </nav>
@@ -81,12 +84,12 @@ const SideBar = () => {
                 }
 
 
-            
-                    <nav id="sidebar">
 
-                        <NavLink id="sidebar" className="nav-link  d-flex side-bar" to={'my-task'} ><img src={CustomersIcon} className="side-bar-icon" />My Task</NavLink>
-                    </nav>
-                
+                <nav id="sidebar">
+
+                    <NavLink id="sidebar" className="nav-link  d-flex side-bar" to={'my-task'} ><img src={CustomersIcon} className="side-bar-icon" />My Task</NavLink>
+                </nav>
+
 
 
 
@@ -103,6 +106,29 @@ const SideBar = () => {
                     </nav>
 
                 }
+
+                <nav id="sidebar">
+
+                    <NavLink id="sidebar" className="nav-link  d-flex side-bar" to={'leave-request'} ><img src={HolidayIcon} className="side-bar-icon" />My Leaves</NavLink>
+                </nav>
+                {views["Leaves-Request"] &&
+                    <nav id="sidebar">
+
+                        <NavLink id="sidebar" className="nav-link  d-flex side-bar" to={'leave-request-from'} ><img src={LeaveReqIcon} className="side-bar-icon" />Leaves Request</NavLink>
+                    </nav>
+
+                }
+
+
+                {views["Hr-Approval"] &&
+                    <nav id="sidebar">
+
+                        <NavLink id="sidebar" className="nav-link  d-flex side-bar" to={'hr-leaves-approval'} ><img src={LeaveReqIcon} className="side-bar-icon" />HR Leaves Approval</NavLink>
+                    </nav>
+                }
+
+
+
             </div>
 
         </div>

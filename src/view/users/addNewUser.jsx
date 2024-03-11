@@ -28,6 +28,7 @@ const AddNewUser = () => {
         axios.get(`${api_end_point}/permission/`,{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
 
@@ -55,6 +56,7 @@ const AddNewUser = () => {
         axios.post(`${api_end_point}/userAuth/register`, { email, password, role, userName, dob, address, city_state, mobile, alternateMob, depatment }, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
 

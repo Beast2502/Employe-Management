@@ -15,13 +15,14 @@ import { api_end_point } from "../../api/api";
 const HomePage = () => {
 
     const [custList, setCustList] = useState([])
-
+ 
     useEffect(() => {
 
 
         axios.get(`${api_end_point}/customers`,{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
 

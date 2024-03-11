@@ -16,6 +16,7 @@ const Customer = () => {
         axios.post(`${api_end_point}/task/assigned` ,{userEmail : sessionStorage.getItem('email')},{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
 
@@ -44,6 +45,7 @@ const Customer = () => {
         axios.post(`${api_end_point}/task/assigned` ,{userEmail : sessionStorage.getItem('email')},{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
 
@@ -67,6 +69,7 @@ const Customer = () => {
           axios.post(`${api_end_point}/task/update` ,{_id , status},{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then(res=>{
             handleRefersh()

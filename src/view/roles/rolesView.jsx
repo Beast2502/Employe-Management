@@ -75,6 +75,7 @@ const RolesView = ({ show, setShow, modalData }) => {
         axios.post(`${api_end_point}/permission/update`, { _id: id, name: roleName, permissions: selected, modules: modules, level: level }, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
             setShow(false)

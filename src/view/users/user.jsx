@@ -20,6 +20,7 @@ const User = () => {
         axios.get(`${api_end_point}/userAuth/getusers`,{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
             console.log(res.data);

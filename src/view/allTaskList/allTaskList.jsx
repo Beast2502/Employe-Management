@@ -16,6 +16,7 @@ const AllTaskList = () => {
         axios.get(`${api_end_point}/task/`,{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
 
@@ -43,6 +44,7 @@ const AllTaskList = () => {
         axios.get(`${api_end_point}/task` ,{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
 

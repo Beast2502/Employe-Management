@@ -1,10 +1,10 @@
 import React from "react";
-import './blogs.css';
+import "./task.css";
 
 import ViewListIcon from '../../assets/viewListIcon.svg'
 
 
-const BlogsTable = ({data ,handleModalData ,handleStatus}) => {
+const TaskTable = ({data ,handleModalData ,handleStatus}) => {
 
     return (
 
@@ -58,4 +58,4 @@ const BlogsTable = ({data ,handleModalData ,handleStatus}) => {
 
 }
 
-export default BlogsTable;
+export default TaskTable;

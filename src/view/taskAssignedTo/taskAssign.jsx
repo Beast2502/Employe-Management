@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Table from '../../component/Table/Table';
 
-import './blogs.css'
+import "./task.css";
 import { useNavigate } from "react-router-dom";
-import BlogsTable from "./blogsTable";
 import axios from "axios";
 import { api_end_point } from "../../api/api";
-import BlogView from "./blogsView";
+import TaskView from "./taskView";
+import TaskTable from "./taskTable";
 
 const TaskAssignTo = () => {
 
     const navigate = useNavigate();
 
-    const [blogList, setBlogList] = useState([]);
+    const [taskList, setTaskList] = useState([]);
 
     const [show, setShow] = useState(false);
     const [modalData, setModalData] = useState({});
@@ -22,10 +21,11 @@ const TaskAssignTo = () => {
         axios.post(`${api_end_point}/task/assignedFrom` ,{userEmail : sessionStorage.getItem('email')},{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then(res => {
             console.log(res.data);
-            setBlogList(res.data)
+            setTaskList(res.data)
         }).catch((err) => {
             console.log(err.response.data.message)
             alert(err.response.data.message)
@@ -36,10 +36,11 @@ const TaskAssignTo = () => {
         axios.post(`${api_end_point}/task/assignedFrom` ,{userEmail : sessionStorage.getItem('email')},{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then(res => {
             console.log(res.data);
-            setBlogList(res.data)
+            setTaskList(res.data)
         }).catch((err) => {
             console.log(err.response.data.message)
             alert(err.response.data.message)
@@ -61,6 +62,7 @@ const TaskAssignTo = () => {
           axios.post(`${api_end_point}/task/update` ,{_id , verify : !verify},{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then(res=>{
             handleRefersh()
@@ -80,7 +82,7 @@ const TaskAssignTo = () => {
                 <div className="blog-header">
                     <div className="w-25 mt-5 mb-5">
                         <div className="blog-heading-content">
-                            Task Assigned To  ({blogList.length})
+                            Task Assigned To  ({taskList.length})
                         </div>
 
                     </div>
@@ -88,9 +90,9 @@ const TaskAssignTo = () => {
                 </div>
                 <input className="form-control me-2 mb-5 w-25" type="search" placeholder="Search" aria-label="Search" />
 
-                {blogList && <BlogsTable data={blogList} handleModalData={handleModalData} handleStatus={handleStatus}/>}
+                {taskList && <TaskTable data={taskList} handleModalData={handleModalData} handleStatus={handleStatus}/>}
 
-                {modalData && <BlogView show={show} setShow={setShow} modalData={modalData} />}
+                {modalData && <TaskView show={show} setShow={setShow} modalData={modalData} />}
 
 
             </div>

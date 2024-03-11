@@ -23,6 +23,7 @@ const Meet = () => {
         axios.post(`${api_end_point}/meet/update`, { id: id, meetlink: meetlink },{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
             console.log(res.data)
@@ -35,6 +36,7 @@ const Meet = () => {
         axios.get(`${api_end_point}/meet/` ,{
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Authorization': sessionStorage.getItem("access-token")
             }
         }).then((res) => {
 
