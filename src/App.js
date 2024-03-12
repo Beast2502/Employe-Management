@@ -153,7 +153,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout loginHandler={loginHandler} setEmail={setEmail} token={token} setPassword={setPassword} />}>
-        <Route index element={<HomePage />} />
+        <Route index element={<HomePage views = {views.AllTask}/>} />
         <Route path='users' element={views.Users ? <User /> : <Navigate to="/" />} />
         <Route path='task-assigned-to' element={views.TaskAssignTo ? <TaskAssignTo /> : <Navigate to="/" />} />
         <Route path='all-task-list' element={views.AllTask ? <AllTask /> : <Navigate to="/" />} />

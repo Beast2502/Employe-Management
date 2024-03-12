@@ -8,7 +8,7 @@ import { api_end_point } from "../../api/api";
 import LeaveView from "./leaveView";
 import LeaveTable from "./leaveTable";
 
-const LeavePage = () => {
+const LeavePage = ({views}) => {
 
     const navigate = useNavigate();
 
@@ -92,7 +92,7 @@ const LeavePage = () => {
             <div className="blog-container">
             
 
-                {leaveList && <LeaveTable data={leaveList} handleModalData={handleModalData} handleStatus={handleStatus} />}
+                {leaveList && <LeaveTable data={leaveList} handleModalData={handleModalData} handleStatus={handleStatus} views={views}/>}
 
                 {modalData && <LeaveView show={show} setShow={setShow} modalData={modalData} />}
 

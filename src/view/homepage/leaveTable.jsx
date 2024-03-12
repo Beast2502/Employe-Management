@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import "./leavePage.css";
 import Card from "../../component/Card/Card";
 
+
+
 import ViewListIcon from '../../assets/viewListIcon.svg'
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { api_end_point } from "../../api/api";
 
 
-const LeaveTable = ({ data, handleModalData, handleStatus }) => {
+const LeaveTable = ({ data, handleModalData, handleStatus, views }) => {
 
 
   const dataLength = data.filter((data, i) => (data.hr_approval && data.reporting_person_approval))
@@ -16,10 +21,48 @@ const LeaveTable = ({ data, handleModalData, handleStatus }) => {
     setShow(!show)
   }
 
+
+  const navigate = useNavigate();
+
+
+  const handleOnClick = () => {
+    navigate("/all-task-list")
+
+  }
+
+  
+  const [custList, setCustList] = useState([])
+
+
+
+  console.log(custList , custList.filter((data)=>data.status === "Pending"), "FILTER DATA")
+
+  useEffect(() => {
+
+
+      axios.get(`${api_end_point}/task/`,{
+          headers: {
+              'ngrok-skip-browser-warning': 'skip-browser-warning',
+              'Authorization': sessionStorage.getItem("access-token")
+          }
+      }).then((res) => {
+
+
+          setCustList(res.data)
+
+      }
+      ).catch((err) => {
+          console.log(err.response.data.message, "ERRR")
+          alert(err.response.data.message)
+      })
+
+  }, []);
   return (
     <>
-      <Card heading={'People On Leaves'} content={dataLength.length} onOnlick={handleShow}  link="/astrologer"/>
-      {/* <Card heading={'Total Astrologers'} content={'200'} link="/astrologer" /> */}
+      <div className="d-flex">
+        <Card heading={'People On Leaves'} content={dataLength.length} onOnlick={handleShow} />
+        {views && <Card heading={'Pending Task'} content={custList.filter((data)=>data.status === "Pending").length} onOnlick={handleOnClick} />}
+      </div>
 
       {show && <>
         <div className="w-25 mt-5 mb-5">
