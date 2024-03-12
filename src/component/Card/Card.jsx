@@ -9,7 +9,7 @@ import ArstroCard from '../../assets/astro-card.svg';
 
 
 
-const Card = ({ heading, content, link }) => {
+const Card = ({ heading, content, link ,onOnlick}) => {
 
     const navigate = useNavigate();
 
@@ -17,10 +17,11 @@ const Card = ({ heading, content, link }) => {
 
     const handleOnClick =()=>{
         navigate(link)
+        
     }
 
     return (
-        <div className="card" style={{ width: '18rem' }} onClick={handleOnClick}>
+        <div className="card" style={{ width: '18rem' }} onClick={onOnlick}>
           
             {link === '/customers' &&  <img src={UserCard} className="card-image"/> }
             {link === '/astrologer' &&  <img src={ArstroCard} className="card-image"/> }

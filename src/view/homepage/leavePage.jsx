@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Card from "../../component/Card/Card";
 
 import "./leavePage.css";
 import { useNavigate } from "react-router-dom";
@@ -67,7 +68,7 @@ const LeavePage = () => {
 
             axios.post(`${api_end_point}/leaves/hr-approval`, {
                 _id,
-                hr_id : sessionStorage.getItem("email"),
+                hr_id: sessionStorage.getItem("email"),
                 hr_approval: !hr_approval
             }, {
                 headers: {
@@ -89,16 +90,7 @@ const LeavePage = () => {
     return (
         <div className="blog-main-container">
             <div className="blog-container">
-                <div className="blog-header">
-                    <div className="w-25 mt-5 mb-5">
-                        <div className="blog-heading-content">
-                           People on Leaves
-                        </div>
-
-                    </div>
-                    {/* <button type="button" className="add-btn" onClick={() => navigate('/add-new-leave')}>Handle Referesh</button> */}
-                </div>
-                <input className="form-control me-2 mb-5 w-25" type="search" placeholder="Search" aria-label="Search" />
+            
 
                 {leaveList && <LeaveTable data={leaveList} handleModalData={handleModalData} handleStatus={handleStatus} />}
 
