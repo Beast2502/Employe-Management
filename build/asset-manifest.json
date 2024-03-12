@@ -1,12 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.69295707.css",
-    "main.js": "/static/js/main.fe289528.js",
-    "static/js/787.2c66936a.chunk.js": "/static/js/787.2c66936a.chunk.js",
+    "main.css": "/static/css/main.cd635687.css",
+    "main.js": "/static/js/main.99731e05.js",
+    "static/js/787.dc89288e.chunk.js": "/static/js/787.dc89288e.chunk.js",
     "static/media/meet.svg": "/static/media/meet.4efdf0dfe1eb36203b5983f881a91c32.svg",
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
     "static/media/permission.svg": "/static/media/permission.1e6b7dfdafbb66f010f64626034db04d.svg",
+    "static/media/holiday.svg": "/static/media/holiday.11f39263707253714422543f9e1c5777.svg",
+    "static/media/holiday-req.svg": "/static/media/holiday-req.663c166a5e6654e1d1ad5e40eac6d423.svg",
     "static/media/astro-card.svg": "/static/media/astro-card.3bee3a0426cd949d04df17fddc5d492b.svg",
     "static/media/users-card.svg": "/static/media/users-card.4304c54c94beb5b4b8b626c04e76b01a.svg",
     "static/media/customer.svg": "/static/media/customer.408ee7d6bce005cd46f56d0721db3b15.svg",
@@ -18,12 +20,12 @@
     "static/media/astroIcon.svg": "/static/media/astroIcon.175fb08a824c5f736a8ff06203618826.svg",
     "static/media/userIcon.svg": "/static/media/userIcon.520d436fdc799c2c17b19ad52509fdad.svg",
     "static/media/downarrow.svg": "/static/media/downarrow.3e9175a91a5301f76f6435da20e61565.svg",
-    "main.69295707.css.map": "/static/css/main.69295707.css.map",
-    "main.fe289528.js.map": "/static/js/main.fe289528.js.map",
-    "787.2c66936a.chunk.js.map": "/static/js/787.2c66936a.chunk.js.map"
+    "main.cd635687.css.map": "/static/css/main.cd635687.css.map",
+    "main.99731e05.js.map": "/static/js/main.99731e05.js.map",
+    "787.dc89288e.chunk.js.map": "/static/js/787.dc89288e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.69295707.css",
-    "static/js/main.fe289528.js"
+    "static/css/main.cd635687.css",
+    "static/js/main.99731e05.js"
   ]
 }

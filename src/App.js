@@ -14,7 +14,7 @@ import {
 } from "react-router-dom";
 
 import RootLayout from './layout/rootlayout';
-import HomePage from './view/homepage/home';
+import HomePage from './view/homepage/leavePage';
 import User from './view/users/user';
 import TaskAssignTo from './view/taskAssignedTo/taskAssign';
 import AllTask from './view/allTaskList/allTaskList';
