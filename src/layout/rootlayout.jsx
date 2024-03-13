@@ -21,14 +21,18 @@ export default function RootLayout({ loginHandler, setEmail, setPassword, token 
 
     return (
         <>
-            {token ? <div className="root-layout">
+            {token ?
+                <>
+                    <div className="root-layout">
 
-                <NavBar />
-                <div className="container-area">
-                    <SideBar />
-                    <Outlet />
-                </div>
-            </div>
+                        <NavBar />
+                        <div className="container-area">
+                            <SideBar />
+                            <Outlet />
+                        </div>
+                    </div>
+                    </>
+
 
                 : <LoginView setEmail={setEmail} setPassword={setPassword} loginHandler={loginHandler} />
             }

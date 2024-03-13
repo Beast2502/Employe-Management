@@ -149,6 +149,7 @@ function App() {
   }, [setViews])
 
 
+  console.log(views,"VIEWS")
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -163,7 +164,7 @@ function App() {
         <Route path='roles' element={views.Roles ? <RolesView /> : <Navigate to="/" />} />
         <Route path='add-new-role' element={views.Roles ? <AddNewRole /> : <Navigate to="/" />} />
         <Route path='leave-request-from' element={<RequestLeaves/>}/>
-        <Route path='hr-leaves-approval' element={<HRRequestLeave/>}/>
+        <Route path='hr-leaves-approval' element={views["Hr-Approval"] ? <HRRequestLeave/> : <Navigate to="/" />}/>
         <Route path='leave-request' element={<LeavePage />} />
         <Route path='add-new-leave' element={<AddNewLeave />} />
 
