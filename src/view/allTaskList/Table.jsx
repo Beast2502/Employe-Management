@@ -2,7 +2,17 @@ import React from "react";
 import "./Tables.css"
 import ViewListIcon from '../../assets/viewListIcon.svg'
 
-const Table = ({ list, handleModalData, viewbtn }) => {
+const Table = ({ list, handleModalData, viewbtn ,filterdata }) => {
+
+  let data = [];
+if(filterdata === 'All' || filterdata === ''){
+  data = list
+
+}else{
+  data = list.filter((data)=>data.status === filterdata)
+}
+
+  console.log(data,"filterdata")
 
   return (
     <table className="table table-responsive text-start" style={{marginBottom:'50px'}}>
@@ -19,7 +29,7 @@ const Table = ({ list, handleModalData, viewbtn }) => {
         </tr>
       </thead>
       <tbody>
-        {list.map((data, i) => {
+        {data.map((data, i) => {
           return (
 
             <tr>

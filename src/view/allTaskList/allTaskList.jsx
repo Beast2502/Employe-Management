@@ -10,10 +10,14 @@ const AllTaskList = () => {
 
     const [custList, setCustList] = useState([])
 
+    const [filterShow, setFilterShow] = useState(false);
+
+    const [filterdata, setFilterData] = useState('')
+
     useEffect(() => {
 
 
-        axios.get(`${api_end_point}/task/`,{
+        axios.get(`${api_end_point}/task/`, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
                 'Authorization': sessionStorage.getItem("access-token")
@@ -41,7 +45,7 @@ const AllTaskList = () => {
     }
 
     const handleRefersh = () => {
-        axios.get(`${api_end_point}/task` ,{
+        axios.get(`${api_end_point}/task`, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
                 'Authorization': sessionStorage.getItem("access-token")
@@ -72,12 +76,32 @@ const AllTaskList = () => {
                         </div>
 
                     </div>
-                    <button type="button" className="add-btn" onClick={handleRefersh}>Refresh</button>
+                    <div className="filter-btngrp">
+                        <div role="group">
+                            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle btn-filter-color " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={() => setFilterShow(!filterShow)}>
+                                Filter
+                            </button>
+                            {filterShow &&
+                                <div className="dropdown-menu-new" aria-labelledby="btnGroupDrop1">
+                                    <button class="dropdown-item" > <span class="badge text-bg-warning" onClick={()=>setFilterData('All')}>All</span></button>
+                                    <button class="dropdown-item" > <span class="badge text-bg-success" onClick={()=>setFilterData('Completed')}>Completed</span></button>
+                                    <button class="dropdown-item" > <span class="badge text-bg-danger" onClick={()=>setFilterData('Not Completed')}>Not Completed</span></button>
+                                    <button class="dropdown-item" > <span class="badge text-bg-primary" onClick={()=>setFilterData('Pending')}>Pending</span></button>
+
+
+                                </div>
+                            }
+
+                        </div>
+
+
+                        <button type="button" className="add-btn" onClick={handleRefersh}>Refresh</button>
+                    </div>
 
                 </div>
                 <input className="form-control me-2 mb-5 w-25" type="search" placeholder="Search" aria-label="Search" />
 
-                <Table list={custList} handleModalData={handleModalData} viewbtn={true} />
+                <Table list={custList} handleModalData={handleModalData} viewbtn={true} filterdata={filterdata} />
 
                 <CustomerView show={show} setShow={setShow} modalData={modalData} />
             </div>

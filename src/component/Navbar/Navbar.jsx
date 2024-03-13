@@ -41,7 +41,7 @@ const NavBar = () => {
                     <NavLink className="navbar-brand" to={'/'} >
                         {/* <img src={BrandIcon} className="" style={{ width: '150px' }} /> */}
                         <div className="heading-content text-end">
-                            Zadaniye
+                            Digital Diary
                         </div>
 
                     </NavLink>
