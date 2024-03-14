@@ -40,7 +40,9 @@ const LeaveTable = ({ data, handleModalData, handleStatus, views }) => {
   useEffect(() => {
 
 
-      axios.get(`${api_end_point}/task/`,{
+      axios.post(`${api_end_point}/task`,{
+        page : 1
+      },{
           headers: {
               'ngrok-skip-browser-warning': 'skip-browser-warning',
               'Authorization': sessionStorage.getItem("access-token")
@@ -48,7 +50,7 @@ const LeaveTable = ({ data, handleModalData, handleStatus, views }) => {
       }).then((res) => {
 
 
-          setCustList(res.data)
+          setCustList(res.data.list)
 
       }
       ).catch((err) => {
