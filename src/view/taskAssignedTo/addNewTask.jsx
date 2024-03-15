@@ -67,7 +67,7 @@ const AddNewBlog = () => {
 
     const userLevel = sessionStorage.getItem('level');
     return (
-        <div style={{ display: "flex", marginBottom: 'auto', background: '#F1F1F1' }}>
+        <div style={{ display: "flex", marginBottom: 'auto', background: '#F1F1F1' , height:'100vh' }}>
             <div className="add-blogs-section">
                 <div className="blog-header">
                     Create Task
