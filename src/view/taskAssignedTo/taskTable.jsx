@@ -16,12 +16,15 @@ const TaskTable = ({data ,handleModalData ,handleStatus}) => {
                     <th scope="col" className="th-container">Assign To</th>
                     <th scope="col" className="th-container">Department</th>
 
-                    
+                    <th scope="col" className="th-container">Priority</th>
+
                     <th scope="col" className="th-container">Status</th>
                     <th scope="col" className="th-container">Created At</th>
                     <th scope="col" className="th-container">Updated At</th>
                     <th scope="col" className="th-container">Verify</th>
                     <th scope="col" className="th-container">Actions</th>
+
+                    
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +35,13 @@ const TaskTable = ({data ,handleModalData ,handleStatus}) => {
               <td>{data.task_desc}</td>
               <td>{data.assign_to}</td>
               <td>{data.assign_to_depart}</td>
+              <td>
+                {data.priority === 'High'  && <span class="badge text-bg-danger">{data.priority}</span>}
+                {data.priority === 'Medium' && <span class="badge text-bg-warning">{data.priority}</span>}
+                {data.priority === 'Low' && <span class="badge text-bg-primary">{data.priority}</span>}
+             
 
+                </td>
               <td>
                 {data.status === 'Progess'  && <span class="badge text-bg-warning">{data.status}</span>}
                 {data.status === 'Pending' && <span class="badge text-bg-primary">{data.status}</span>}

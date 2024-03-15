@@ -84,7 +84,7 @@ const LeavePage = () => {
 
     return (
         <div className="blog-main-container">
-            <div className="blog-container">
+            <div className="leave-container">
                 <div className="blog-header">
                     <div className="w-25 mt-5 mb-5">
                         <div className="blog-heading-content">

@@ -9,7 +9,7 @@ import "./task.css";
 const AddNewBlog = () => {
 
 
-  
+
 
     const navigate = useNavigate();
 
@@ -17,16 +17,21 @@ const AddNewBlog = () => {
     const [userList, setUserList] = useState([]);
 
     const [taskDesc, setDesc] = useState('');
-    const [assignTo ,setAssign] = useState('');
+    const [assignTo, setAssign] = useState('');
 
-    const [assignDepart ,setAssDepart] = useState('');
-  
-    const handleBlog = () => {
-
-       
+    const [assignDepart, setAssDepart] = useState('');
+    const [priority , setPrriority] = useState('');
 
 
-        axios.post(`${api_end_point}/task/create`, {task_desc : taskDesc , assign_to:assignTo , assign_from: sessionStorage.getItem('email') , assign_to_depart : assignDepart},{
+
+
+
+    const handleTask = () => {
+
+
+
+
+        axios.post(`${api_end_point}/task/create`, { task_desc: taskDesc, assign_to: assignTo, assign_from: sessionStorage.getItem('email'), assign_to_depart: assignDepart ,priority:priority}, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
                 'Authorization': sessionStorage.getItem("access-token")
@@ -42,7 +47,7 @@ const AddNewBlog = () => {
 
     useEffect(() => {
 
-        axios.get(`${api_end_point}/userAuth/getUsers`,{
+        axios.get(`${api_end_point}/userAuth/getUsers`, {
             headers: {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
                 'Authorization': sessionStorage.getItem("access-token")
@@ -57,10 +62,10 @@ const AddNewBlog = () => {
 
 
     }, [])
-    
-    console.log(sessionStorage.getItem('level') ,"LEVEL TEST")
 
-    const userLevel = sessionStorage.getItem('level') ;
+    console.log(sessionStorage.getItem('level'), "LEVEL TEST")
+
+    const userLevel = sessionStorage.getItem('level');
     return (
         <div style={{ display: "flex", marginBottom: 'auto', background: '#F1F1F1' }}>
             <div className="add-blogs-section">
@@ -91,16 +96,33 @@ const AddNewBlog = () => {
                             <select class="form-control form-select" aria-label="Default select example" onChange={(e) => setAssign(e.target.value)}>
                                 <option selected>Open this select menu</option>
                                 {userList.map((data) => {
-                                    if(data?.level[0]?.level < userLevel )
-                                    return (<option value={data.email}>{data.email}</option>)
+                                    if (data?.level[0]?.level < userLevel)
+                                        return (<option value={data.email}>{data.email}</option>)
                                 })}
 
                             </select>
                         </div>
 
+                        <div className="col mb-3 text-start">
+                            <label for="formGroupExampleInput" className="label">Priority</label>
+
+                            <select class="form-control form-select" aria-label="Default select example" onChange={(e) => setPrriority(e.target.value)}>
+                                <option selected>Select the Option</option>
+                                <option value={'High'} className="text-bg-danger">
+                                    High
+                                </option>
+                                <option value={'Medium'} className="text-bg-warning">
+                                    Medium
+                                </option>
+                                <option value={'Low'} className="text-bg-primary">
+                                    Low
+                                </option>
+                            </select>
+                        </div>
+
                     </div>
 
-                    <button type="button" className="add-btn" onClick={handleBlog}>Create</button>
+                    <button type="button" className="add-btn" onClick={handleTask}>Create</button>
                 </div>
             </div>
 

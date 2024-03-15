@@ -17,6 +17,8 @@ const Table = ({ list, handleModalData, viewbtn, handleStatus }) => {
           <th scope="col" className="th-container">Task Desc</th>
           <th scope="col" className="th-container">Assign From</th>
           <th scope="col" className="th-container">Department</th>
+          <th scope="col" className="th-container">Priority</th>
+
           <th scope="col" className="th-container">Status</th>
           <th scope="col" className="th-container">Created At</th>
           <th scope="col" className="th-container">Updated At</th>
@@ -34,6 +36,13 @@ const Table = ({ list, handleModalData, viewbtn, handleStatus }) => {
               <td>{data.assign_from}</td>
             
               <td>{data.assign_to_depart}</td>
+              <td>
+                {data.priority === 'High'  && <span class="badge text-bg-danger">{data.priority}</span>}
+                {data.priority === 'Medium' && <span class="badge text-bg-warning">{data.priority}</span>}
+                {data.priority === 'Low' && <span class="badge text-bg-primary">{data.priority}</span>}
+             
+
+                </td>
               <td>
                 {data.status === 'Progess'  && <span class="badge text-bg-warning">{data.status}</span>}
                 {data.status === 'Pending' && <span class="badge text-bg-primary">{data.status}</span>}
